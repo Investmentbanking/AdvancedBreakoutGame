@@ -26,13 +26,11 @@ public class JOptionPanePause {
         UIManager.put("OptionPane.background",new ColorUIResource(255,0,0));
         UIManager.put("Panel.background",new ColorUIResource(255,0,0));
 
-        int number = JOptionPane.showConfirmDialog(Window.frame,
+        return JOptionPane.showConfirmDialog(Window.frame,
                 getPanel(),
                 "You have paused your game",
-                JOptionPane.CANCEL_OPTION,
+                JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
-
-        return number;
     }
 
     /**

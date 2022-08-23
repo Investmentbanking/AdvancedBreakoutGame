@@ -1,9 +1,25 @@
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
+/**
+ * Ball class which creates the ball and controls what happens when ball collides with the window
+ * frame and paddle. Also updates the logic of the ball.
+ *
+ */
 public class Ball extends GameObject{
 
 
+    /**
+     *
+     * @param xPosition The x position of the ball on the window.
+     * @param yPosition The y position of the ball on the window.
+     * @param xSpeed The x speed of the ball.
+     * @param ySpeed The y speed of the ball.
+     * @param width The width of the ball.
+     * @param height The height of the ball.
+     * @param id The id of the game object (brick, paddle or ball) to make sure its a ball.
+     * @param handler An instance of handler class which handles the game objects.
+     */
     public Ball(int xPosition, int yPosition, int xSpeed, int ySpeed, int width, int height, ID id, Handler handler) {
         super(xPosition, yPosition, xSpeed, ySpeed, width, height, id, handler);
     }
@@ -68,9 +84,9 @@ public class Ball extends GameObject{
     }
 
     /**
-     * Returning the area where you have your circle
+     * Returning the area where you have your ball.
      *
-     * @return
+     * @return The bounds of the ball.
      */
     public Ellipse2D.Double getBounds(){
         return new Ellipse2D.Double(xPosition,yPosition,width, height);

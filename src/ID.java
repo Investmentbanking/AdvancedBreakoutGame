@@ -6,6 +6,6 @@ public enum ID {
 
     PADDLE,
     BALL,
-    BRICK;
+    BRICK
 
 }

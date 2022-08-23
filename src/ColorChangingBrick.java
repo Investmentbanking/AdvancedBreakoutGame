@@ -9,11 +9,11 @@ public class ColorChangingBrick extends Brick {
 
     @Override
     public boolean checkTopAndBottomCollision(Ball ball) {
-        if((ball.getBounds().intersects(getTopBound()) || ball.getBounds().intersects(getBottonBound())) && colorID == ColorID.PINK){
+        if((ball.getBounds().intersects(getTopBound()) || ball.getBounds().intersects(getBottomBound())) && colorID == ColorID.PINK){
             colorID = ColorID.WHITE;
             ball.invertY();
             return true;
-        } else if ((ball.getBounds().intersects(getTopBound()) || ball.getBounds().intersects(getBottonBound())) && colorID == ColorID.WHITE) {
+        } else if ((ball.getBounds().intersects(getTopBound()) || ball.getBounds().intersects(getBottomBound())) && colorID == ColorID.WHITE) {
             // invert y velocity for ball
             ball.invertY();
             handler.removeGameObjects(this);

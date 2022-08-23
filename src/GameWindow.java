@@ -10,10 +10,8 @@ import java.util.ArrayList;
  */
 public class GameWindow extends JPanel implements Runnable, KeyListener, ActionListener {
 
-    private Handler handler;
+    private final Handler handler;
     private boolean gameRunning = false;
-    private final static int BOARD_WIDTH = 500;
-    private final static int BOARD_HEIGHT = 500;
 
     public boolean paddleLeft = false;
     public boolean paddleRight = false;
@@ -24,9 +22,8 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
 
     private int limit = 3;
 
-    private JButton pause;
     // default image
-    private ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
     private Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("space.jpg"));
 
 
@@ -36,7 +33,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         handler.addGameObjects(new Ball(20,200,0,0,20,20,ID.BALL,handler));
         handler.addGameObjects(new Paddle(250,450,0,0,100,10,ID.PADDLE, handler));
 
-        pause = new JButton("Pause");
+        JButton pause = new JButton("Pause");
         pause.setFont(new Font("Arial", Font.BOLD, 9));
         pause.setBackground(Color.pink);
         pause.addActionListener(e -> {
@@ -161,8 +158,8 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         if(limit == -1) {
             gameRunning = true;
             ArrayList<Ball> balls = handler.getBalls(); // gets the
-            for(int i=0; i<balls.size(); i++){
-                Ball temp = balls.get(i); // gets each ball in arraylist and starts it
+            // gets each ball in arraylist and starts it
+            for (Ball temp : balls) {
                 temp.startBall();
             }
         }
@@ -183,7 +180,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
     }
 
     public void youLoseMessage(Graphics g) throws InterruptedException {
-        if(message == true) {
+        if(message) {
             Font f = new Font("Comic Sans MS", Font.BOLD, 20);
             g.setColor(Color.white);
             g.setFont(f);
@@ -232,8 +229,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
                 g.drawString(String.format("%s", "YOU LOSE"), 150,300);
 
                 ArrayList<Ball> balls = handler.getBalls();
-                for(int i=0;i<balls.size();i++){
-                    Ball temp = balls.get(i);
+                for (Ball temp : balls) {
                     temp.stopBall();
                 }
                 Thread thread = new Thread(this);

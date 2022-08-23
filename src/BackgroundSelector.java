@@ -8,7 +8,6 @@ import java.awt.*;
  */
 public class BackgroundSelector extends JPanel{
 
-
     GameWindow game = new GameWindow();
 
     JLabel label;
@@ -22,7 +21,7 @@ public class BackgroundSelector extends JPanel{
     JRadioButton radioButton6;
 
     /**
-     * Adds the radio buttons to a button group and displays them on the JPanel using a flow layout.
+     * Constructor which adds the radio buttons to a button group and displays them on the JPanel using a flow layout.
      *
      */
     public BackgroundSelector(){
@@ -156,6 +155,7 @@ public class BackgroundSelector extends JPanel{
     }
 
     /**
+     * Adds radioButton to the JPanel, when clicked, creates a new game with the japanese purple background.
      *
      */
     public void option6(){

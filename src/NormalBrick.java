@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 public class NormalBrick extends Brick {
 
@@ -21,7 +20,7 @@ public class NormalBrick extends Brick {
     }
 
     public boolean checkTopAndBottomCollision(Ball ball){
-        if(ball.getBounds().intersects(getTopBound()) || ball.getBounds().intersects(getBottonBound())){
+        if(ball.getBounds().intersects(getTopBound()) || ball.getBounds().intersects(getBottomBound())){
             // invert y velocity for ball
             ball.invertY();
             handler.removeGameObjects(this);

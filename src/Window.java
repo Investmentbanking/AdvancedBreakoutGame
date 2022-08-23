@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 
 /**
  *
@@ -12,7 +11,7 @@ public class Window {
     BackgroundSelector background;
     public static MainBackgroundImage main; // start window
 
-    public Window() throws Exception {
+    public Window() {
 
         frame = new JFrame("Brick Builder Game"); // creates JFrame
 
@@ -89,8 +88,6 @@ public class Window {
         frame.getContentPane().removeAll();
         background = new BackgroundSelector();
         frame.getContentPane().add(background);
-        //frame.addKeyListener((KeyListener) background);
-        //frame.addKeyListener(game);
         frame.revalidate();
     }
 
@@ -103,7 +100,7 @@ public class Window {
         frame.revalidate();
     }
 
-        public static void main (String[]args) throws Exception {
+        public static void main (String[]args) {
             new Window();
         }
     }

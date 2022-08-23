@@ -36,26 +36,23 @@ public class Handler {
      */
     public ArrayList<Ball> getBalls(){
         ArrayList<Ball> balls = new ArrayList<>();
-        for(int i = 0; i < objects.size(); i++){
-            GameObject temp = objects.get(i);
-            if(temp.getID() == ID.BALL){ // if it is a ball
-                balls.add((Ball)temp);
+        for (GameObject temp : objects) {
+            if (temp.getID() == ID.BALL) { // if it is a ball
+                balls.add((Ball) temp);
             }
         }
         return balls;
     }
 
     public void render(Graphics g){
-        for(int i = 0; i < objects.size(); i++){
-            GameObject temp = objects.get(i);
+        for (GameObject temp : objects) {
             temp.render(g);
         }
     }
 
     public Paddle getPaddle(){
-        for(int i = 0; i< objects.size(); i++){
-            GameObject temp = objects.get(i);
-            if(temp.getID() == ID.PADDLE){
+        for (GameObject temp : objects) {
+            if (temp.getID() == ID.PADDLE) {
                 return (Paddle) temp;
             }
         }
@@ -74,9 +71,7 @@ public class Handler {
 
     public ArrayList<Brick> getBricks() {
         ArrayList<Brick> bricks = new ArrayList<>();
-        for(int i = 0; i < objects.size(); i++) {
-            GameObject temp = objects.get(i);
-
+        for (GameObject temp : objects) {
             if (temp.getID() == ID.BRICK) {
                 bricks.add((Brick) temp);
             }
