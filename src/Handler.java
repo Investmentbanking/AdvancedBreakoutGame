@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Handler class handles all the game objects in the window
+ * Handler class handles all the game objects in the window which are the ball
  *
  */
 public class Handler {

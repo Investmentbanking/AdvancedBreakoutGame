@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.FlatteningPathIterator;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * This class creates the game window and all necessary components of the game,
@@ -18,12 +15,6 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
     private final static int BOARD_WIDTH = 500;
     private final static int BOARD_HEIGHT = 500;
 
-    public int paddleX = BOARD_WIDTH/2;
-    public int paddleY = BOARD_HEIGHT-50;
-
-    private int paddleW = 100;
-    private int paddleH = 10;
-
     public boolean paddleLeft = false;
     public boolean paddleRight = false;
     public boolean message;
@@ -32,16 +23,12 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
     private static int lives;
 
     private int limit = 3;
-    private int count = 0;
 
     private JButton pause;
     // default image
     private ClassLoader cl = Thread.currentThread().getContextClassLoader();
     private Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("space.jpg"));
 
-    public void changeFilepath(String filepath){
-        this.image = Toolkit.getDefaultToolkit().getImage(cl.getResource(filepath));
-    }
 
     public GameWindow(){
         lives = 3;
@@ -61,11 +48,8 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         });
         add(pause);
 
-        //addButton();
         addKeyListener(this);
-        //addMouseListener(this);
         setFocusable(true);
-        //dimension = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
         setBackground(Color.BLACK);
 
         // normal bricks
@@ -101,7 +85,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
             greenX += 110;
         }
 
-        // pink bricks
+        // pink bricks which change color
         int pinkX = 75;
         int pinkY = 100; //80
         for(int i = 0; i < 4; i++){
@@ -114,10 +98,18 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         setDoubleBuffered(true);
     }
 
+    /**
+     * Changes the file path of the image.
+     *
+     * @param filepath The filepath to the image.
+     */
+    public void changeFilepath(String filepath){
+        this.image = Toolkit.getDefaultToolkit().getImage(cl.getResource(filepath));
+    }
 
     /**
      * Pauses the game and shows a dialog box in which user can choose to continue game
-     * or quit which goes back to main menu
+     * or quit which goes back to main menu.
      *
      * @throws InterruptedException
      */
@@ -135,18 +127,28 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         }
     }
 
+    /**
+     * Gets the current lives the user has in the game
+     *
+     * @return lives The number of lives.
+     */
     public static int getLives(){
         return lives;
     }
 
+    /**
+     * Sets the number of lives the player has during game.
+     *
+     * @param totalLives The number of lives the player has in the game.
+     */
     public static void setLives(int totalLives){
         lives = totalLives;
     }
 
     /**
-     * Draws the countdown from 3 to 1 then starts the game.
+     * Draws the countdown from 3 to 1 then when timer hits -1 it starts the game.
      *
-     * @param g Graphics card
+     * @param g Graphics card.
      * @throws InterruptedException
      */
     public void drawNumber(Graphics g) throws InterruptedException {
@@ -158,7 +160,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         limit--;
         if(limit == -1) {
             gameRunning = true;
-            ArrayList<Ball> balls = handler.getBalls();
+            ArrayList<Ball> balls = handler.getBalls(); // gets the
             for(int i=0; i<balls.size(); i++){
                 Ball temp = balls.get(i); // gets each ball in arraylist and starts it
                 temp.startBall();
@@ -214,7 +216,6 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
 
         handler.render(g);
 
-
         // paint the countdown
         if (!gameRunning) {
             try {
@@ -241,8 +242,6 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
                 e.printStackTrace();
             }
         }
-
-        //g.dispose();
     }
 
     @Override
@@ -269,13 +268,6 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         Paddle paddle = handler.getPaddle();
         paddle.setXSpeed(0);
         repaint();
-    }
-
-
-    public void mainMenu(){
-        Window.frame.getContentPane().removeAll();
-        Window.frame.getContentPane().add(Window.main);
-        Window.frame.revalidate();
     }
 
     @Override
