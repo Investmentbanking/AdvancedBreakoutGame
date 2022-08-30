@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  *
@@ -9,6 +10,7 @@ public class Window {
     public static JFrame frame;
     GameWindow game;
     BackgroundSelector background;
+    DifficultySelector difficulty;
     public static MainBackgroundImage main; // start window
 
     public Window() {
@@ -17,13 +19,11 @@ public class Window {
 
         game = new GameWindow(); // creates new GAME window
         main = new MainBackgroundImage(); // creates MAIN screen
-        background = new BackgroundSelector();
+        background = new BackgroundSelector(); // creates BACKGROUND SELECTOR window
+        difficulty = new DifficultySelector(); // creates DIFFICULTY SELECTOR window
 
-        // creates main panel layout
-        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-        main.add(Box.createRigidArea(new Dimension(0, 20)));
+        main.setLayout(null);
 
-        //frame.getContentPane().setBackground(Color.magenta);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.setBounds(10, 10, 500, 500);
         frame.setVisible(true);
@@ -32,27 +32,21 @@ public class Window {
         frame.getContentPane().add(main); // adds MAIN screen to frame
 
         JButton start = new JButton("Start");
+        start.setBounds(150,270,200,40);
         JButton quit = new JButton("Quit");
+        quit.setBounds(150,370,200,40);
         JButton backgroundSelector = new JButton("Background Selector");
-        JLabel label = new JLabel("Welcome to brick breaker!");
+        backgroundSelector.setBounds(150, 320,200,40);
 
-        //start.setBackground(Color.white);
-        start.setOpaque(false);
-        start.setContentAreaFilled(false);
-        //start.setBorderPainted(false);
-        start.setForeground(Color.white);
+        start.setForeground(Color.black);
+        start.setBackground(Color.white);
 
-        quit.setOpaque(false);
-        quit.setContentAreaFilled(false);
-        //quit.setBorderPainted(false);
-        quit.setForeground(Color.white);
+        quit.setForeground(Color.black);
+        quit.setBackground(Color.white);
 
-        backgroundSelector.setOpaque(false);
-        backgroundSelector.setContentAreaFilled(false);
-        //backgroundSelector.setBorderPainted(false);
-        backgroundSelector.setForeground(Color.white);
+        backgroundSelector.setBackground(Color.white);
+        backgroundSelector.setForeground(Color.black);
 
-        label.setForeground(Color.white);
 
         start.setFocusable(false);
         quit.setFocusable(false);
@@ -60,23 +54,21 @@ public class Window {
         start.setAlignmentX(Component.CENTER_ALIGNMENT);
         quit.setAlignmentX(Component.CENTER_ALIGNMENT);
         backgroundSelector.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        main.add(label);
+        
         main.add(start); // adds JButton
         main.add(quit);
         main.add(backgroundSelector);
 
         main.validate();
 
-        start.addActionListener(e -> gamePanel());
+        start.addActionListener(e -> difficultyPanel());
+
         quit.addActionListener(e -> {
             frame.dispose();
         });
+
         backgroundSelector.addActionListener(e -> backgroundPanel());
     }
-
-
 
     public static void mainPanel(){
         frame.getContentPane().removeAll();
@@ -97,6 +89,13 @@ public class Window {
         frame.getContentPane().add(game);
         game.requestFocusInWindow();
         frame.addKeyListener(game);
+        frame.revalidate();
+    }
+
+    public void difficultyPanel(){
+        frame.getContentPane().removeAll();
+        difficulty = new DifficultySelector();
+        frame.getContentPane().add(difficulty);
         frame.revalidate();
     }
 
