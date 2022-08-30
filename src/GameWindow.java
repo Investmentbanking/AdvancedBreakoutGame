@@ -34,8 +34,9 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         handler.addGameObjects(new Paddle(250,450,0,0,100,10,ID.PADDLE, handler));
 
         JButton pause = new JButton("Pause");
-        pause.setFont(new Font("Arial", Font.BOLD, 9));
-        pause.setBackground(Color.pink);
+        pause.setFont(new Font("Arial", Font.BOLD, 15));
+        pause.setBackground(Color.white);
+        pause.setForeground(Color.black);
         pause.addActionListener(e -> {
             try {
                 pauseGame();
@@ -113,12 +114,15 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
     public void pauseGame() throws InterruptedException {
         timer.stop();
         int number = new JOptionPanePause().displayGUI();
-        if(number == 0){
+        if(number == 0) {
             timer.start();
             setFocusable(true);
            requestFocusInWindow();
         }
-        else{
+        else {
+            DifficultySelector.easyChecked = false;
+            DifficultySelector.mediumChecked = false;
+            DifficultySelector.hardChecked = false;
             Thread thread = new Thread(this);
             thread.start();
         }
@@ -153,19 +157,32 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         paddleRight = false;
         Font f = new Font("Comic Sans MS", Font.BOLD, 40);
         g.setFont(f);
+        g.setColor(Color.white);
         g.drawString(String.format("%s", limit), 300, 300);
         limit--;
         if(limit == -1) {
             gameRunning = true;
-            ArrayList<Ball> balls = handler.getBalls(); // gets the
+            // ADDED SPEED HERE // 4 5
+            ArrayList<Ball> balls = handler.getBalls();
             // gets each ball in arraylist and starts it
             for (Ball temp : balls) {
-                temp.startBall();
+                if(DifficultySelector.easyChecked){
+                    temp.startBall(4,5);
+                }
+                else if (DifficultySelector.mediumChecked){
+                    temp.startBall(9,10);
+                }
+                else if (DifficultySelector.hardChecked){
+                    temp.startBall(15,16);
+                }
+                //temp.startBall(4,5);
             }
+            //startTheBall(4,5);
         }
         repaint();
         Thread.sleep(1000);
     }
+
 
     /**
      * The number of lives the player has. (Lives: ).
@@ -173,10 +190,10 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
      * @param g
      */
     public void lives(Graphics g) {
-        Font f = new Font("Comic Sans MS", Font.BOLD, 10);
+        Font f = new Font("Comic Sans MS", Font.BOLD, 20); // 10
         g.setColor(Color.white);
         g.setFont(f);
-        g.drawString(String.format("%s", "Lives: " + getLives()), 300,10);
+        g.drawString(String.format("%s", "Lives: " + getLives()), 400,25); // 300 10
     }
 
     public void youLoseMessage(Graphics g) throws InterruptedException {
@@ -234,6 +251,9 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
                 }
                 Thread thread = new Thread(this);
                 thread.start(); // calls the run() method which essentially goes back to main menu
+                DifficultySelector.easyChecked = false;
+                DifficultySelector.mediumChecked = false;
+                DifficultySelector.hardChecked = false;
             } catch (Exception e) {
                 e.printStackTrace();
             }
