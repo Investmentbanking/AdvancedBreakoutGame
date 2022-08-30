@@ -14,6 +14,8 @@ Right arrow: move paddle right
 # Screenshots 
 ![image](https://user-images.githubusercontent.com/41571606/187329406-4977aa99-06d3-4cd6-88a9-f9343aaf5760.png)
 
+![image](https://user-images.githubusercontent.com/41571606/187329558-009931b6-0eec-4052-bdda-74a4e8560383.png)
+
 ![image](https://user-images.githubusercontent.com/41571606/187321219-5c4fd9bc-0bb4-4715-868a-b99ee559bda7.png)
 
 ![image](https://user-images.githubusercontent.com/41571606/187321302-2fd32b5c-00fe-4749-8dbb-44e8fa824e66.png)
