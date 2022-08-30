@@ -8,7 +8,6 @@ import java.awt.geom.Ellipse2D;
  */
 public class Ball extends GameObject{
 
-
     /**
      *
      * @param xPosition The x position of the ball on the window.
@@ -39,14 +38,27 @@ public class Ball extends GameObject{
         checkCollision();
     }
     
-    public void startBall(){
-        xSpeed = 4;
-        ySpeed = 5;
+    public void startBall(int speedX, int speedY){
+        xSpeed = speedX;
+        ySpeed = speedY;
+    }
+
+    public void easyLevelStartBall(){
+        xSpeed = 10;
+        ySpeed = 11;
     }
     
     public void stopBall(){
         xSpeed = 0;
         ySpeed = 0;
+    }
+
+    public int getXSpeed(){
+        return xSpeed;
+    }
+
+    public int getYSpeed(){
+        return ySpeed;
     }
 
     public void invertX() {
