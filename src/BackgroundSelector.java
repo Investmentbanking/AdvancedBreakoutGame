@@ -10,6 +10,9 @@ public class BackgroundSelector extends JPanel{
 
     GameWindow game = new GameWindow();
 
+    private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("black.jpg"));
+
     JLabel label;
 
     // creates the radioButtons which display the backgrounds to choose from
@@ -26,7 +29,7 @@ public class BackgroundSelector extends JPanel{
      */
     public BackgroundSelector(){
 
-        setBackground(Color.black);
+        //setBackground(Color.black);
         label = new JLabel("Please select a background", JLabel.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
         label.setForeground(Color.white);
@@ -47,6 +50,17 @@ public class BackgroundSelector extends JPanel{
         option5();
         option6();
         add(label);
+    }
+
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        image.getScaledInstance(500, 500,Image.SCALE_SMOOTH);
+        while(!prepareImage(image, this)) {
+            prepareImage(image, this);
+        }
+        g.drawImage(image,0,0,null);
     }
 
     /**

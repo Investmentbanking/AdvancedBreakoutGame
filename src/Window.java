@@ -1,6 +1,8 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -14,7 +16,7 @@ public class Window {
     DifficultySelector difficulty;
     public static MainBackgroundImage main; // start window
 
-    public Window() {
+    public Window() throws IOException {
 
         frame = new JFrame("Brick Builder Game"); // creates JFrame
 
@@ -33,22 +35,34 @@ public class Window {
         frame.getContentPane().add(main); // adds MAIN screen to frame
 
         //Icon icon = new ImageIcon("start.png");
-        JButton start = new JButton("Start");
+
+        JButton start = new JButton();
+        Image startImg = ImageIO.read(getClass().getResource("start.png"));
+        start.setIcon(new ImageIcon(startImg));
         start.setBounds(150,270,200,40);
-        JButton quit = new JButton("Quit");
-        quit.setBounds(150,370,200,40);
-        JButton backgroundSelector = new JButton("Background Selector");
+        start.setOpaque(false);
+        start.setBorderPainted(false);
+
+        JButton backgroundSelector = new JButton();
+        Image selectorImg = ImageIO.read(getClass().getResource("selector.png"));
+        backgroundSelector.setIcon(new ImageIcon(selectorImg));
         backgroundSelector.setBounds(150, 320,200,40);
+        backgroundSelector.setOpaque(false);
+        backgroundSelector.setBorderPainted(false);
 
-        start.setForeground(Color.black);
+
+        JButton quit = new JButton();
+        Image quitImg = ImageIO.read(getClass().getResource("quit.png"));
+        quit.setIcon(new ImageIcon(quitImg));
+        quit.setBounds(150,370,200,40);
+        quit.setOpaque(false);
+        quit.setBorderPainted(false);
+
+        main.repaint();
+
         start.setBackground(Color.white);
-
-        quit.setForeground(Color.black);
-        quit.setBackground(Color.white);
-
         backgroundSelector.setBackground(Color.white);
-        backgroundSelector.setForeground(Color.black);
-
+        quit.setBackground(Color.white);
 
         start.setFocusable(false);
         quit.setFocusable(false);
@@ -62,6 +76,7 @@ public class Window {
         main.add(backgroundSelector);
 
         main.validate();
+        main.repaint();
 
         start.addActionListener(e -> difficultyPanel());
 
@@ -101,7 +116,7 @@ public class Window {
         frame.revalidate();
     }
 
-        public static void main (String[]args) {
+        public static void main (String[]args) throws IOException {
             new Window();
         }
     }
