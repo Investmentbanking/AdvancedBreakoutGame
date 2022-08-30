@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -13,7 +14,7 @@ public class Window {
     public static JFrame frame;
     GameWindow game;
     BackgroundSelector background;
-    DifficultySelector difficulty;
+    static DifficultySelector difficulty;
     public static MainBackgroundImage main; // start window
 
     public Window() throws IOException {
@@ -113,6 +114,8 @@ public class Window {
         frame.getContentPane().removeAll();
         difficulty = new DifficultySelector();
         frame.getContentPane().add(difficulty);
+        frame.requestFocusInWindow();
+        //frame.addKeyListener((KeyListener) difficulty);
         frame.revalidate();
     }
 
