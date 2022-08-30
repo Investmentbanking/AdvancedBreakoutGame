@@ -13,8 +13,8 @@ Right arrow: move paddle right
 
 # Screenshots 
 
-![image](https://user-images.githubusercontent.com/41571606/185850612-f608fb0b-50ea-4566-9671-ed644d52f207.png)
+![image](https://user-images.githubusercontent.com/41571606/187320410-d9939435-0574-4f99-a4e9-375fc1d326e7.png)
 
 ![image](https://user-images.githubusercontent.com/41571606/185850730-59246045-cb94-47ac-aa5f-2bab136f54d9.png)
 
-Currently a work in progress, not yet finished 
+**Currently a work in progress, not finished!!!**
