@@ -13,8 +13,10 @@ Right arrow: move paddle right
 
 # Screenshots 
 
-![image](https://user-images.githubusercontent.com/41571606/187320410-d9939435-0574-4f99-a4e9-375fc1d326e7.png)
+![image](https://user-images.githubusercontent.com/41571606/187321268-386e8ed3-fb00-4501-be1c-04452d60212e.png)
 
-![image](https://user-images.githubusercontent.com/41571606/185850730-59246045-cb94-47ac-aa5f-2bab136f54d9.png)
+![image](https://user-images.githubusercontent.com/41571606/187321219-5c4fd9bc-0bb4-4715-868a-b99ee559bda7.png)
+
+![image](https://user-images.githubusercontent.com/41571606/187321302-2fd32b5c-00fe-4749-8dbb-44e8fa824e66.png)
 
 **Currently a work in progress, not finished!!!**
