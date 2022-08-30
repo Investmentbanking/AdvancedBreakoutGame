@@ -2,6 +2,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.Arrays;
@@ -29,13 +31,12 @@ public class Window {
         main.setLayout(null);
 
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.setBounds(10, 10, 500, 500);
+        frame.setSize(500,500);
         frame.setVisible(true);
         frame.setResizable(false);
 
         frame.getContentPane().add(main); // adds MAIN screen to frame
 
-        //Icon icon = new ImageIcon("start.png");
 
         JButton start = new JButton();
         Image startImg = ImageIO.read(getClass().getResource("start.png"));
@@ -59,6 +60,9 @@ public class Window {
         quit.setOpaque(false);
         quit.setBorderPainted(false);
 
+        JLabel loading = new JLabel();
+        loading.setBounds(150,400,100,20);
+
         main.repaint();
 
         start.setBackground(Color.white);
@@ -75,9 +79,7 @@ public class Window {
         main.add(start); // adds JButton
         main.add(quit);
         main.add(backgroundSelector);
-
-        main.validate();
-        main.repaint();
+        main.add(loading);
 
         start.addActionListener(e -> difficultyPanel());
 
@@ -85,7 +87,12 @@ public class Window {
             frame.dispose();
         });
 
-        backgroundSelector.addActionListener(e -> backgroundPanel());
+        backgroundSelector.addActionListener(e -> {
+            loading.setText("Loading...");
+            backgroundPanel();
+        });
+
+        //backgroundSelector.addActionListener(e -> backgroundPanel());
     }
 
     public static void mainPanel(){
@@ -101,21 +108,11 @@ public class Window {
         frame.revalidate();
     }
 
-    public void gamePanel() {
-        frame.getContentPane().removeAll();
-        game = new GameWindow();
-        frame.getContentPane().add(game);
-        game.requestFocusInWindow();
-        frame.addKeyListener(game);
-        frame.revalidate();
-    }
-
     public void difficultyPanel(){
         frame.getContentPane().removeAll();
         difficulty = new DifficultySelector();
         frame.getContentPane().add(difficulty);
         frame.requestFocusInWindow();
-        //frame.addKeyListener((KeyListener) difficulty);
         frame.revalidate();
     }
 

@@ -9,7 +9,6 @@ import java.awt.event.KeyListener;
  */
 public class BackgroundSelector extends JPanel{
 
-    //GameWindow game = new GameWindow();
     DifficultySelector difficulty = new DifficultySelector();
 
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -38,7 +37,6 @@ public class BackgroundSelector extends JPanel{
      */
     public BackgroundSelector(){
 
-        //setBackground(Color.black);
         label = new JLabel("Please select a background", JLabel.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
         label.setForeground(Color.white);
@@ -62,6 +60,10 @@ public class BackgroundSelector extends JPanel{
     }
 
 
+    /**
+     * Paints background image of panel to black chalk image.
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

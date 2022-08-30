@@ -194,14 +194,14 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         g.drawString(String.format("%s", "Lives: " + getLives()), 400,25); // 300 10
     }
 
-    public void youLoseMessage(Graphics g) throws InterruptedException {
-        if(message) {
-            Font f = new Font("Comic Sans MS", Font.BOLD, 20);
-            g.setColor(Color.white);
-            g.setFont(f);
-            g.drawString(String.format("%s", "YOU HAVE 1 LIFE LEFT!"), 150, 300);
-        }
-    }
+    //public void youLoseMessage(Graphics g) throws InterruptedException {
+      //  if(message) {
+        //    Font f = new Font("Comic Sans MS", Font.BOLD, 20);
+         //   g.setColor(Color.white);
+          //  g.setFont(f);
+           // g.drawString(String.format("%s", "YOU HAVE 1 LIFE LEFT!"), 150, 300);
+        //}
+    //}
 
     public void setDelay(int delay){
         this.delay = delay;
