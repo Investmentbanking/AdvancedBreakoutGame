@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.Arrays;
 
@@ -31,6 +32,7 @@ public class Window {
 
         frame.getContentPane().add(main); // adds MAIN screen to frame
 
+        //Icon icon = new ImageIcon("start.png");
         JButton start = new JButton("Start");
         start.setBounds(150,270,200,40);
         JButton quit = new JButton("Quit");

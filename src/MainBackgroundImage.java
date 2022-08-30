@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class MainBackgroundImage extends JPanel{
 
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
-    private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("main.jpg"));
+    private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("brick.jpg"));
 
 
     @Override
