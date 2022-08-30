@@ -175,9 +175,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
                 else if (DifficultySelector.hardChecked){
                     temp.startBall(15,16);
                 }
-                //temp.startBall(4,5);
             }
-            //startTheBall(4,5);
         }
         repaint();
         Thread.sleep(1000);

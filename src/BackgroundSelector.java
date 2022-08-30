@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
  */
 public class BackgroundSelector extends JPanel{
 
-    GameWindow game = new GameWindow();
+    //GameWindow game = new GameWindow();
     DifficultySelector difficulty = new DifficultySelector();
 
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
