@@ -12,8 +12,9 @@ Left arrow: move paddle left
 Right arrow: move paddle right 
 
 # Screenshots 
+![image](https://user-images.githubusercontent.com/41571606/187329406-4977aa99-06d3-4cd6-88a9-f9343aaf5760.png)
 
-![image](https://user-images.githubusercontent.com/41571606/187321268-386e8ed3-fb00-4501-be1c-04452d60212e.png)
+![image](https://user-images.githubusercontent.com/41571606/187329823-a0ba751b-1b81-49d7-9439-75aff0c40910.png)
 
 ![image](https://user-images.githubusercontent.com/41571606/187321219-5c4fd9bc-0bb4-4715-868a-b99ee559bda7.png)
 
