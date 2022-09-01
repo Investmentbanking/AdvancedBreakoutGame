@@ -16,6 +16,8 @@ public class BackgroundSelector extends JPanel{
 
     JLabel label;
 
+    ButtonGroup group = new ButtonGroup();
+
     // creates the radioButtons which display the backgrounds to choose from
     JRadioButton radioButton;
     JRadioButton radioButton2;
@@ -42,7 +44,7 @@ public class BackgroundSelector extends JPanel{
         label.setForeground(Color.white);
 
         setLayout(new FlowLayout());
-        ButtonGroup group = new ButtonGroup();
+
         group.add(radioButton);
         group.add(radioButton2);
         group.add(radioButton3);
@@ -94,14 +96,9 @@ public class BackgroundSelector extends JPanel{
         add(radioButton);
         radioButton.addActionListener(e -> {
             option1 = true;
-            //Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("space.jpg");
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
-            //Window.frame.getContentPane().add(difficulty);
-            //Window.frame.requestFocusInWindow();
-            //Window.frame.revalidate();
-            //option1 = true;
         });
+        group.clearSelection();
     }
 
     /**
@@ -115,13 +112,8 @@ public class BackgroundSelector extends JPanel{
         radioButton2.addActionListener(e -> {
             option2 = true;
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
-            //Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("space.jpg");
-            //Window.frame.getContentPane().add(difficulty);
-            //Window.frame.requestFocusInWindow();
-            //Window.frame.revalidate();
-
         });
+        group.clearSelection();
     }
 
     /**
@@ -135,12 +127,8 @@ public class BackgroundSelector extends JPanel{
         radioButton3.addActionListener(e -> {
             option3 = true;
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
-            //Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            //Window.frame.getContentPane().add(difficulty);
-            //Window.frame.requestFocusInWindow();
-            //Window.frame.revalidate();
         });
+        group.clearSelection();
     }
 
     /**
@@ -154,13 +142,8 @@ public class BackgroundSelector extends JPanel{
         radioButton4.addActionListener(e -> {
             option4 = true;
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
-            //Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            //Window.frame.getContentPane().add(difficulty);
-            //Window.frame.requestFocusInWindow();
-            //Window.frame.revalidate();
-
         });
+        group.clearSelection();
     }
 
     /**
@@ -174,13 +157,8 @@ public class BackgroundSelector extends JPanel{
         radioButton5.addActionListener(e -> {
             option5 = true;
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
-            //Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            //Window.frame.getContentPane().add(difficulty);
-            //Window.frame.requestFocusInWindow();
-            //Window.frame.revalidate();
-
         });
+        group.clearSelection();
     }
 
     /**
@@ -194,13 +172,9 @@ public class BackgroundSelector extends JPanel{
         radioButton6.addActionListener(e -> {
             option6 = true;
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
-            //Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            //Window.frame.getContentPane().add(difficulty);
-            //Window.frame.requestFocusInWindow();
-            //Window.frame.revalidate();
-
+            group.clearSelection();
         });
+        //group.clearSelection();
     }
 }
 

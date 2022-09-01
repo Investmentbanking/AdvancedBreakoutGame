@@ -10,7 +10,7 @@ public class Window {
 
     public static JFrame frame;
     GameWindow game;
-    BackgroundSelector background;
+    static BackgroundSelector background;
     static DifficultySelector difficulty;
     public static MainBackgroundImage main; // start window
     JProgressBar progressBar = new JProgressBar();
@@ -102,6 +102,12 @@ public class Window {
 
     public static void mainPanel(){
         cardLayout.show(cardPane, "Main Menu");
+    }
+
+    public static void updateBackgroundPanel() {
+        cardPane.remove(background);
+        //cardPane.add(background, "working?");
+        //cardLayout.show(cardPane,"working?");
     }
 
     public void backgroundPanel(){

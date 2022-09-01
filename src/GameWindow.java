@@ -15,23 +15,18 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
 
     public boolean paddleLeft = false;
     public boolean paddleRight = false;
-    public boolean message;
     private Timer timer;
     private int delay = 30;
     private static int lives;
 
     private int limit = 3;
 
-    private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
-    private static final String MOVE_UP = "move left";
-    private static final String MOVE_DOWN = "move right";
-
     // default image
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
     private Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("space.jpg"));
 
 
-    public GameWindow(){
+    public GameWindow() {
         lives = 3;
         handler = new Handler();
         handler.addGameObjects(new Ball(20,200,0,0,20,20,ID.BALL,handler));
@@ -50,7 +45,6 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
         });
         add(pause);
 
-        //addKeyListener(this);
         setFocusable(true);
         setBackground(Color.BLACK);
 
@@ -170,7 +164,7 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
         if(number == 0) {
             timer.start();
             setFocusable(true);
-           requestFocusInWindow();
+            requestFocusInWindow();
         }
         else {
             DifficultySelector.easyChecked = false;
@@ -300,20 +294,26 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
                 e.printStackTrace();
             }
         }
+        if(handler.getBricks().size() == 0){
+            Font f = new Font("Comic Sans MS", Font.BOLD, 20);
+            g.setColor(Color.white);
+            g.setFont(f);
+            g.drawString(String.format("%s", "CONGRATS YOU WIN!"), 150,300);
+            ArrayList<Ball> balls = handler.getBalls();
+            for (Ball temp : balls) {
+                temp.stopBall();
+            }
+           Thread thread = new Thread(this);
+           thread.start();
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         timer.start();
         handler.updateLogic();
-
-        if (handler.getBricks().size() == 0) {
-            System.out.println("YOU WIN!");
-            Thread thread = new Thread(this);
-            thread.start();
-        }
+        //
         repaint();
-
         Toolkit.getDefaultToolkit().sync();
     }
 

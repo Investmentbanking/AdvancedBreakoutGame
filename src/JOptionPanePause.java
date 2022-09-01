@@ -23,8 +23,8 @@ public class JOptionPanePause {
         defaults.put("Button.focus", new ColorUIResource(new Color(0, 0, 0, 0)));
 
         // colors the JOptionPane red
-        UIManager.put("OptionPane.background",new ColorUIResource(255,0,0));
-        UIManager.put("Panel.background",new ColorUIResource(255,0,0));
+        UIManager.put("OptionPane.background",new ColorUIResource(252, 251, 251));
+        UIManager.put("Panel.background",new ColorUIResource(253, 252, 252));
 
         return JOptionPane.showConfirmDialog(Window.frame,
                 getPanel(),
@@ -40,7 +40,7 @@ public class JOptionPanePause {
      */
     public JPanel getPanel(){
         JPanel panel = new JPanel();
-        panel.setBackground(Color.MAGENTA);
+        panel.setBackground(Color.white);
         JLabel label = new JLabel("Would you like to return to your game or quit?");
         panel.add(label);
         return panel;
