@@ -24,7 +24,7 @@ public class DifficultySelector extends JPanel {
     public static boolean mediumChecked = false;
     public static boolean hardChecked = false;
 
-    public DifficultySelector(){
+    public DifficultySelector() {
 
         JLabel label = new JLabel("Please select the difficulty", JLabel.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
@@ -142,7 +142,6 @@ public class DifficultySelector extends JPanel {
             setVariablesFalse();
         });
         Window.cardPane.remove(newGame);
-        //setVariablesFalse();
     }
 
     private void medium(){
@@ -164,9 +163,11 @@ public class DifficultySelector extends JPanel {
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
+            if(newGame.goMainMenu){
+                Window.cardPane.remove(newGame);
+                System.out.println("game removed");
+            }
         });
-        Window.cardPane.remove(newGame);
-        //setVariablesFalse();
     }
 
     private void hard(){
@@ -187,9 +188,7 @@ public class DifficultySelector extends JPanel {
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
-
         });
         Window.cardPane.remove(newGame);
-        //setVariablesFalse();
     }
 }

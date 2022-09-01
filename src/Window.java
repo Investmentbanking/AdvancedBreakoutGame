@@ -8,16 +8,16 @@ import java.io.IOException;
  */
 public class Window {
 
-    public static JFrame frame;
+    protected static JFrame frame;
     GameWindow game;
     static BackgroundSelector background;
     static DifficultySelector difficulty;
-    public static MainBackgroundImage main; // start window
+    protected static MainBackgroundImage main; // start window
     JProgressBar progressBar = new JProgressBar();
 
     // for the card layout
-    public static CardLayout cardLayout = new CardLayout();
-    public static JPanel cardPane = new JPanel(); // holds the other panels
+    protected static CardLayout cardLayout = new CardLayout();
+    protected static JPanel cardPane = new JPanel(); // holds the other panels
 
     public Window() throws IOException {
 
@@ -102,12 +102,6 @@ public class Window {
 
     public static void mainPanel(){
         cardLayout.show(cardPane, "Main Menu");
-    }
-
-    public static void updateBackgroundPanel() {
-        cardPane.remove(background);
-        //cardPane.add(background, "working?");
-        //cardLayout.show(cardPane,"working?");
     }
 
     public void backgroundPanel(){

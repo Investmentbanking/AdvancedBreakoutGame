@@ -1,5 +1,8 @@
 import java.awt.*;
 
+/**
+ *
+ */
 public class ColorChangingBrick extends Brick {
 
 

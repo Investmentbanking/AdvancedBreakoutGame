@@ -9,8 +9,6 @@ import java.awt.event.KeyListener;
  */
 public class BackgroundSelector extends JPanel{
 
-    DifficultySelector difficulty = new DifficultySelector();
-
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
     private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("black.jpg"));
 
@@ -26,12 +24,12 @@ public class BackgroundSelector extends JPanel{
     JRadioButton radioButton5;
     JRadioButton radioButton6;
 
-    public static boolean option1 = false;
-    public static boolean option2 = false;
-    public static boolean option3 = false;
-    public static boolean option4 = false;
-    public static boolean option5 = false;
-    public static boolean option6 = false;
+    protected static boolean option1 = false;
+    protected static boolean option2 = false;
+    protected static boolean option3 = false;
+    protected static boolean option4 = false;
+    protected static boolean option5 = false;
+    protected static boolean option6 = false;
 
     /**
      * Constructor which adds the radio buttons to a button group and displays them on the JPanel using a flow layout.
@@ -174,7 +172,6 @@ public class BackgroundSelector extends JPanel{
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
             group.clearSelection();
         });
-        //group.clearSelection();
     }
 }
 

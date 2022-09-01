@@ -12,10 +12,11 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
 
     private final Handler handler;
     private boolean gameRunning = false;
+    protected boolean goMainMenu = false;
 
-    public boolean paddleLeft = false;
-    public boolean paddleRight = false;
-    private Timer timer;
+    protected boolean paddleLeft = false;
+    protected boolean paddleRight = false;
+    private final Timer timer;
     private int delay = 30;
     private static int lives;
 
@@ -24,7 +25,6 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
     // default image
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
     private Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("space.jpg"));
-
 
     public GameWindow() {
         lives = 3;
@@ -312,7 +312,6 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
     public void actionPerformed(ActionEvent e) {
         timer.start();
         handler.updateLogic();
-        //
         repaint();
         Toolkit.getDefaultToolkit().sync();
     }
