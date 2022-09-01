@@ -86,7 +86,6 @@ public class Window {
 
         cardPane.add(difficulty, "Difficulty panel");
         start.addActionListener(e -> {
-
             cardLayout.show(cardPane, "Difficulty panel");
         });
 

@@ -5,14 +5,13 @@ import java.util.ArrayList;
 
 /**
  * This class creates the game window and all necessary components of the game,
- * including the bricks, ball, paddle and the JComponents like the JButton
+ * including the bricks, ball, paddle and the JComponents like the JButtons
  *
  */
 public class GameWindow extends JPanel implements Runnable, ActionListener {
 
     private final Handler handler;
     private boolean gameRunning = false;
-    protected boolean goMainMenu = false;
 
     protected boolean paddleLeft = false;
     protected boolean paddleRight = false;
@@ -170,6 +169,8 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
             DifficultySelector.easyChecked = false;
             DifficultySelector.mediumChecked = false;
             DifficultySelector.hardChecked = false;
+            DifficultySelector.ultraHardChecked = false;
+            DifficultySelector.impossibleChecked = false;
             Thread thread = new Thread(this);
             thread.start();
         }
@@ -217,10 +218,16 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
                     temp.startBall(4,5);
                 }
                 else if (DifficultySelector.mediumChecked){
-                    temp.startBall(9,10);
+                    temp.startBall(6,7);
                 }
                 else if (DifficultySelector.hardChecked){
-                    temp.startBall(15,16);
+                    temp.startBall(9,10);
+                }
+                else if (DifficultySelector.ultraHardChecked){
+                    temp.startBall(10,11);
+                }
+                else if (DifficultySelector.impossibleChecked){
+                    temp.startBall(12,13);
                 }
             }
         }

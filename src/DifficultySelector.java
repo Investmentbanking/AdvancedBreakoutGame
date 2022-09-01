@@ -20,9 +20,11 @@ public class DifficultySelector extends JPanel {
     JButton impossible;
     JButton back;
 
-    public static boolean easyChecked = false;
-    public static boolean mediumChecked = false;
-    public static boolean hardChecked = false;
+    protected static boolean easyChecked = false;
+    protected static boolean mediumChecked = false;
+    protected static boolean hardChecked = false;
+    protected static boolean ultraHardChecked = false;
+    protected static boolean impossibleChecked = false;
 
     public DifficultySelector() {
 
@@ -36,18 +38,14 @@ public class DifficultySelector extends JPanel {
         c.weighty = 0.1;
         c.insets = new Insets(0, 0, 0, 0);
         c.gridwidth = GridBagConstraints.REMAINDER;
-        //c.fill = GridBagConstraints.BOTH;
 
         add(label,c);
         easy();
         medium();
         hard();
+        ultraHard();
+        impossible();
 
-
-        ultraHard = new JButton("ULTRA HARD");
-        ultraHard.setBackground(Color.blue);
-        ultraHard.setForeground(Color.white);
-        impossible = new JButton("IMPOSSIBLE");
         impossible.setBackground(Color.black);
         impossible.setForeground(Color.white);
         add(ultraHard,c);
@@ -138,10 +136,9 @@ public class DifficultySelector extends JPanel {
             option6Ticked();
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
-
             setVariablesFalse();
         });
-        Window.cardPane.remove(newGame);
+        //Window.cardPane.remove(newGame);
     }
 
     private void medium(){
@@ -163,10 +160,6 @@ public class DifficultySelector extends JPanel {
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
-            if(newGame.goMainMenu){
-                Window.cardPane.remove(newGame);
-                System.out.println("game removed");
-            }
         });
     }
 
@@ -189,6 +182,47 @@ public class DifficultySelector extends JPanel {
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
         });
-        Window.cardPane.remove(newGame);
+    }
+
+    private void ultraHard(){
+        ultraHard = new JButton("ULTRA HARD");
+        ultraHard.setBackground(Color.blue);
+        ultraHard.setForeground(Color.white);
+        add(ultraHard,c);
+        ultraHard.addActionListener(e -> {
+            ultraHardChecked = true;
+            newGame = new GameWindow();
+            option1Ticked();
+            option2Ticked();
+            option3Ticked();
+            option4Ticked();
+            option5Ticked();
+            option6Ticked();
+            option2Ticked();
+            Window.cardPane.add(newGame, "new Game");
+            Window.cardLayout.show(Window.cardPane, "new Game");
+            setVariablesFalse();
+        });
+    }
+
+    private void impossible(){
+        impossible = new JButton("IMPOSSIBLE");
+        impossible.setBackground(Color.black);
+        impossible.setForeground(Color.white);
+        add(impossible,c);
+        impossible.addActionListener(e -> {
+            impossibleChecked = true;
+            newGame = new GameWindow();
+            option1Ticked();
+            option2Ticked();
+            option3Ticked();
+            option4Ticked();
+            option5Ticked();
+            option6Ticked();
+            option2Ticked();
+            Window.cardPane.add(newGame, "new Game");
+            Window.cardLayout.show(Window.cardPane, "new Game");
+            setVariablesFalse();
+        });
     }
 }
