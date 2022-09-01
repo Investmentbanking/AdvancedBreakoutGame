@@ -93,12 +93,14 @@ public class BackgroundSelector extends JPanel{
         radioButton = new JRadioButton(url);
         add(radioButton);
         radioButton.addActionListener(e -> {
-            Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("space.jpg");
-            Window.frame.getContentPane().add(difficulty);
-            Window.frame.requestFocusInWindow();
-            Window.frame.revalidate();
             option1 = true;
+            //Window.frame.getContentPane().removeAll();
+            //game.changeFilepath("space.jpg");
+            Window.cardLayout.show(Window.cardPane, "Difficulty panel");
+            //Window.frame.getContentPane().add(difficulty);
+            //Window.frame.requestFocusInWindow();
+            //Window.frame.revalidate();
+            //option1 = true;
         });
     }
 
@@ -111,12 +113,14 @@ public class BackgroundSelector extends JPanel{
         radioButton2 = new JRadioButton(url);
         add(radioButton2);
         radioButton2.addActionListener(e -> {
-            Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("space.jpg");
-            Window.frame.getContentPane().add(difficulty);
-            Window.frame.requestFocusInWindow();
-            Window.frame.revalidate();
             option2 = true;
+            Window.cardLayout.show(Window.cardPane, "Difficulty panel");
+            //Window.frame.getContentPane().removeAll();
+            //game.changeFilepath("space.jpg");
+            //Window.frame.getContentPane().add(difficulty);
+            //Window.frame.requestFocusInWindow();
+            //Window.frame.revalidate();
+
         });
     }
 
@@ -129,12 +133,13 @@ public class BackgroundSelector extends JPanel{
         radioButton3 = new JRadioButton(url);
         add(radioButton3);
         radioButton3.addActionListener(e -> {
-            Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            Window.frame.getContentPane().add(difficulty);
-            Window.frame.requestFocusInWindow();
-            Window.frame.revalidate();
             option3 = true;
+            Window.cardLayout.show(Window.cardPane, "Difficulty panel");
+            //Window.frame.getContentPane().removeAll();
+            //game.changeFilepath("stars.jpg");
+            //Window.frame.getContentPane().add(difficulty);
+            //Window.frame.requestFocusInWindow();
+            //Window.frame.revalidate();
         });
     }
 
@@ -147,12 +152,14 @@ public class BackgroundSelector extends JPanel{
         radioButton4 = new JRadioButton(url);
         add(radioButton4);
         radioButton4.addActionListener(e -> {
-            Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            Window.frame.getContentPane().add(difficulty);
-            Window.frame.requestFocusInWindow();
-            Window.frame.revalidate();
             option4 = true;
+            Window.cardLayout.show(Window.cardPane, "Difficulty panel");
+            //Window.frame.getContentPane().removeAll();
+            //game.changeFilepath("stars.jpg");
+            //Window.frame.getContentPane().add(difficulty);
+            //Window.frame.requestFocusInWindow();
+            //Window.frame.revalidate();
+
         });
     }
 
@@ -165,12 +172,14 @@ public class BackgroundSelector extends JPanel{
         radioButton5 = new JRadioButton(url);
         add(radioButton5);
         radioButton5.addActionListener(e -> {
-            Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            Window.frame.getContentPane().add(difficulty);
-            Window.frame.requestFocusInWindow();
-            Window.frame.revalidate();
             option5 = true;
+            Window.cardLayout.show(Window.cardPane, "Difficulty panel");
+            //Window.frame.getContentPane().removeAll();
+            //game.changeFilepath("stars.jpg");
+            //Window.frame.getContentPane().add(difficulty);
+            //Window.frame.requestFocusInWindow();
+            //Window.frame.revalidate();
+
         });
     }
 
@@ -183,12 +192,14 @@ public class BackgroundSelector extends JPanel{
         radioButton6 = new JRadioButton(url);
         add(radioButton6);
         radioButton6.addActionListener(e -> {
-            Window.frame.getContentPane().removeAll();
-            //game.changeFilepath("stars.jpg");
-            Window.frame.getContentPane().add(difficulty);
-            Window.frame.requestFocusInWindow();
-            Window.frame.revalidate();
             option6 = true;
+            Window.cardLayout.show(Window.cardPane, "Difficulty panel");
+            //Window.frame.getContentPane().removeAll();
+            //game.changeFilepath("stars.jpg");
+            //Window.frame.getContentPane().add(difficulty);
+            //Window.frame.requestFocusInWindow();
+            //Window.frame.revalidate();
+
         });
     }
 }

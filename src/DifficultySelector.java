@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ *
+ */
 public class DifficultySelector extends JPanel {
 
-    GameWindow game = new GameWindow();
+    GameWindow newGame = new GameWindow();
 
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
     private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("black.jpg"));
@@ -13,13 +16,14 @@ public class DifficultySelector extends JPanel {
     JButton easyLevel;
     JButton mediumLevel;
     JButton hardLevel;
+    JButton back;
 
     public static boolean easyChecked = false;
     public static boolean mediumChecked = false;
     public static boolean hardChecked = false;
 
     public DifficultySelector(){
-        //setBackground(Color.BLACK);
+
         JLabel label = new JLabel("Please select the difficulty", JLabel.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
         label.setForeground(Color.white);
@@ -33,15 +37,20 @@ public class DifficultySelector extends JPanel {
         c.gridwidth = GridBagConstraints.REMAINDER;
         //c.fill = GridBagConstraints.BOTH;
 
-        //changeBackground();
-
         add(label,c);
         easy();
         medium();
         hard();
+        //backButton();
     }
 
-
+    public void backButton(){
+        back = new JButton("Back");
+        add(back,c);
+        back.addActionListener(e -> {
+            Window.cardLayout.previous(Window.cardPane);
+        });
+    }
 
 
     @Override
@@ -57,37 +66,37 @@ public class DifficultySelector extends JPanel {
 
     private void option1Ticked(){
         if(BackgroundSelector.option1) {
-            game.changeFilepath("space.jpg");
+            newGame.changeFilepath("space.jpg");
         }
     }
 
     private void option2Ticked(){
         if(BackgroundSelector.option2) {
-            game.changeFilepath("bricks.jpg");
+            newGame.changeFilepath("bricks.jpg");
         }
     }
 
     private void option3Ticked(){
         if(BackgroundSelector.option3) {
-            game.changeFilepath("stars.jpg");
+            newGame.changeFilepath("stars.jpg");
         }
     }
 
     private void option4Ticked(){
         if(BackgroundSelector.option4) {
-            game.changeFilepath("bubbles.jpg");
+            newGame.changeFilepath("bubbles.jpg");
         }
     }
 
     private void option5Ticked(){
         if(BackgroundSelector.option5) {
-            game.changeFilepath("forest.jpg");
+            newGame.changeFilepath("forest.jpg");
         }
     }
 
     private void option6Ticked(){
         if(BackgroundSelector.option6) {
-            game.changeFilepath("purple.jpg");
+            newGame.changeFilepath("purple.jpg");
         }
     }
 
@@ -100,8 +109,6 @@ public class DifficultySelector extends JPanel {
         BackgroundSelector.option6 = false;
     }
 
-
-
     private void easy(){
         easyLevel = new JButton("EASY");
         easyLevel.setBackground(Color.green);
@@ -109,20 +116,22 @@ public class DifficultySelector extends JPanel {
         add(easyLevel,c);
         easyLevel.addActionListener(e -> {
             easyChecked = true;
+
+            //newGame.changeFilepath("purple.jpg");
+            newGame = new GameWindow();
             option1Ticked();
             option2Ticked();
             option3Ticked();
             option4Ticked();
             option5Ticked();
             option6Ticked();
-            Window.frame.getContentPane().removeAll();
-            Window.frame.getContentPane().add(game);
-            Window.frame.addKeyListener(game);
-            game.setFocusable(true);
-            game.requestFocusInWindow();
-            Window.frame.revalidate();
+            Window.cardPane.add(newGame, "new Game");
+            Window.cardLayout.show(Window.cardPane, "new Game");
+
+            setVariablesFalse();
         });
-        setVariablesFalse();
+        Window.cardPane.remove(newGame);
+        //setVariablesFalse();
     }
 
     private void medium(){
@@ -132,6 +141,7 @@ public class DifficultySelector extends JPanel {
         add(mediumLevel,c);
         mediumLevel.addActionListener(e -> {
             mediumChecked = true;
+            newGame = new GameWindow();
             option1Ticked();
             option2Ticked();
             option3Ticked();
@@ -139,14 +149,13 @@ public class DifficultySelector extends JPanel {
             option5Ticked();
             option6Ticked();
             option2Ticked();
-            Window.frame.getContentPane().removeAll();
-            Window.frame.getContentPane().add(game);
-            Window.frame.addKeyListener(game);
-            game.setFocusable(true);
-            game.requestFocusInWindow();
-            Window.frame.revalidate();
+
+            Window.cardPane.add(newGame, "new Game");
+            Window.cardLayout.show(Window.cardPane, "new Game");
+            setVariablesFalse();
         });
-        setVariablesFalse();
+        Window.cardPane.remove(newGame);
+        //setVariablesFalse();
     }
 
     private void hard(){
@@ -156,6 +165,7 @@ public class DifficultySelector extends JPanel {
         add(hardLevel,c);
         hardLevel.addActionListener(e -> {
             hardChecked = true;
+            newGame = new GameWindow();
             option1Ticked();
             option2Ticked();
             option3Ticked();
@@ -163,14 +173,13 @@ public class DifficultySelector extends JPanel {
             option5Ticked();
             option6Ticked();
             option2Ticked();
-            Window.frame.getContentPane().removeAll();
-            Window.frame.getContentPane().add(game);
-            Window.frame.addKeyListener(game);
-            game.setFocusable(true);
-            game.requestFocusInWindow();
-            Window.frame.revalidate();
+            Window.cardPane.add(newGame, "new Game");
+            Window.cardLayout.show(Window.cardPane, "new Game");
+            setVariablesFalse();
+
         });
-        setVariablesFalse();
+        Window.cardPane.remove(newGame);
+        //setVariablesFalse();
     }
 
 }

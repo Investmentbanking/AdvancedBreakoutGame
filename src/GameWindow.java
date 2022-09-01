@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * including the bricks, ball, paddle and the JComponents like the JButton
  *
  */
-public class GameWindow extends JPanel implements Runnable, KeyListener, ActionListener {
+public class GameWindow extends JPanel implements Runnable, ActionListener {
 
     private final Handler handler;
     private boolean gameRunning = false;
@@ -21,6 +21,10 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
     private static int lives;
 
     private int limit = 3;
+
+    private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+    private static final String MOVE_UP = "move left";
+    private static final String MOVE_DOWN = "move right";
 
     // default image
     private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
@@ -46,7 +50,7 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         });
         add(pause);
 
-        addKeyListener(this);
+        //addKeyListener(this);
         setFocusable(true);
         setBackground(Color.BLACK);
 
@@ -94,6 +98,55 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         timer = new Timer(delay, this);
         timer.start();
         setDoubleBuffered(true);
+
+        movePaddle();
+    }
+
+    public void movePaddle() {
+        String actionId = "left";
+        KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false);
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke, actionId);
+        getActionMap().put(actionId, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Paddle paddle = handler.getPaddle();
+                    paddle.setXSpeed(-5);
+                    repaint();
+            }
+        });
+        String actionId1 = "right";
+        KeyStroke keyStroke1 = KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT,0,false);
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke1, actionId1);
+        getActionMap().put(actionId1, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Paddle paddle = handler.getPaddle();
+                paddle.setXSpeed(5);
+                repaint();
+            }
+        });
+        String actionId2 = "leftReleased";
+        KeyStroke keyStroke2 = KeyStroke.getKeyStroke(KeyEvent.VK_LEFT,0,true);
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke2, actionId2);
+        getActionMap().put(actionId2, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Paddle paddle = handler.getPaddle();
+                paddle.setXSpeed(0);
+                repaint();
+            }
+        });
+        String actionId3 = "rightReleased";
+        KeyStroke keyStroke3 = KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT,0,true);
+        getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke3, actionId3);
+        getActionMap().put(actionId3, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Paddle paddle = handler.getPaddle();
+                paddle.setXSpeed(0);
+                repaint();
+            }
+        });
     }
 
     /**
@@ -194,15 +247,6 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
         g.drawString(String.format("%s", "Lives: " + getLives()), 400,25); // 300 10
     }
 
-    //public void youLoseMessage(Graphics g) throws InterruptedException {
-      //  if(message) {
-        //    Font f = new Font("Comic Sans MS", Font.BOLD, 20);
-         //   g.setColor(Color.white);
-          //  g.setFont(f);
-           // g.drawString(String.format("%s", "YOU HAVE 1 LIFE LEFT!"), 150, 300);
-        //}
-    //}
-
     public void setDelay(int delay){
         this.delay = delay;
     }
@@ -259,32 +303,6 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        Paddle paddle = handler.getPaddle();
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                paddle.setXSpeed(5);
-                repaint();
-
-        }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            paddle.setXSpeed(-5);
-            repaint();
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        Paddle paddle = handler.getPaddle();
-        paddle.setXSpeed(0);
-        repaint();
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
         timer.start();
         handler.updateLogic();
@@ -313,6 +331,5 @@ public class GameWindow extends JPanel implements Runnable, KeyListener, ActionL
 
         timer.stop();
         Window.mainPanel();
-        Window.frame.repaint();
     }
 }

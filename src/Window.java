@@ -1,15 +1,10 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
- *
+ * Controls all the panels in the JFrame
  */
 public class Window {
 
@@ -18,8 +13,15 @@ public class Window {
     BackgroundSelector background;
     static DifficultySelector difficulty;
     public static MainBackgroundImage main; // start window
+    JProgressBar progressBar = new JProgressBar();
+
+    // for the card layout
+    public static CardLayout cardLayout = new CardLayout();
+    public static JPanel cardPane = new JPanel(); // holds the other panels
 
     public Window() throws IOException {
+
+        cardPane.setLayout(cardLayout);
 
         frame = new JFrame("Brick Builder Game"); // creates JFrame
 
@@ -30,13 +32,14 @@ public class Window {
 
         main.setLayout(null);
 
+        cardPane.add(main, "Main Menu");
+        cardPane.add(game, "Game Panel");
+
+        frame.add(cardPane);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.setSize(500,500);
         frame.setVisible(true);
         frame.setResizable(false);
-
-        frame.getContentPane().add(main); // adds MAIN screen to frame
-
 
         JButton start = new JButton();
         Image startImg = ImageIO.read(getClass().getResource("start.png"));
@@ -51,7 +54,6 @@ public class Window {
         backgroundSelector.setBounds(150, 320,200,40);
         backgroundSelector.setOpaque(false);
         backgroundSelector.setBorderPainted(false);
-
 
         JButton quit = new JButton();
         Image quitImg = ImageIO.read(getClass().getResource("quit.png"));
@@ -80,40 +82,30 @@ public class Window {
         main.add(quit);
         main.add(backgroundSelector);
         main.add(loading);
+        main.add(progressBar);
 
-        start.addActionListener(e -> difficultyPanel());
+        cardPane.add(difficulty, "Difficulty panel");
+        start.addActionListener(e -> {
+
+            cardLayout.show(cardPane, "Difficulty panel");
+        });
 
         quit.addActionListener(e -> {
             frame.dispose();
         });
 
+        cardPane.add(background, "Background Panel");
         backgroundSelector.addActionListener(e -> {
-            loading.setText("Loading...");
             backgroundPanel();
         });
-
-        //backgroundSelector.addActionListener(e -> backgroundPanel());
     }
 
     public static void mainPanel(){
-        frame.getContentPane().removeAll();
-        frame.getContentPane().add(main);
-        frame.validate();
+        cardLayout.show(cardPane, "Main Menu");
     }
 
     public void backgroundPanel(){
-        frame.getContentPane().removeAll();
-        background = new BackgroundSelector();
-        frame.getContentPane().add(background);
-        frame.revalidate();
-    }
-
-    public void difficultyPanel(){
-        frame.getContentPane().removeAll();
-        difficulty = new DifficultySelector();
-        frame.getContentPane().add(difficulty);
-        frame.requestFocusInWindow();
-        frame.revalidate();
+        cardLayout.show(cardPane, "Background Panel");
     }
 
         public static void main (String[]args) throws IOException {
