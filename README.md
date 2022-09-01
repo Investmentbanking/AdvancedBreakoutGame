@@ -24,7 +24,7 @@ Background selector:
 
 Difficulty selector:
 
-![image](https://user-images.githubusercontent.com/41571606/187321219-5c4fd9bc-0bb4-4715-868a-b99ee559bda7.png)
+![image](https://user-images.githubusercontent.com/41571606/188005131-e0ae4aa8-0aed-4e69-8d28-2905e46b1c2f.png)
 
 Default background:
 
