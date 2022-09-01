@@ -16,6 +16,8 @@ public class DifficultySelector extends JPanel {
     JButton easyLevel;
     JButton mediumLevel;
     JButton hardLevel;
+    JButton ultraHard;
+    JButton impossible;
     JButton back;
 
     public static boolean easyChecked = false;
@@ -27,7 +29,6 @@ public class DifficultySelector extends JPanel {
         JLabel label = new JLabel("Please select the difficulty", JLabel.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
         label.setForeground(Color.white);
-        //label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         setLayout(new GridBagLayout());
 
@@ -41,17 +42,30 @@ public class DifficultySelector extends JPanel {
         easy();
         medium();
         hard();
-        //backButton();
+
+
+        ultraHard = new JButton("ULTRA HARD");
+        ultraHard.setBackground(Color.blue);
+        ultraHard.setForeground(Color.white);
+        impossible = new JButton("IMPOSSIBLE");
+        impossible.setBackground(Color.black);
+        impossible.setForeground(Color.white);
+        add(ultraHard,c);
+        add(impossible,c);
+        backButton();
     }
 
     public void backButton(){
-        back = new JButton("Back");
+        back = new JButton("Go back to Main Menu");
+        back.setBackground(Color.gray);
+        back.setForeground(Color.white);
         add(back,c);
         back.addActionListener(e -> {
-            Window.cardLayout.previous(Window.cardPane);
+              Window.cardLayout.show(Window.cardPane, "Main Menu");
+              setVariablesFalse();
         });
+        setVariablesFalse();
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -62,7 +76,6 @@ public class DifficultySelector extends JPanel {
         }
         g.drawImage(image,0,0,null);
     }
-
 
     private void option1Ticked(){
         if(BackgroundSelector.option1) {
@@ -116,8 +129,6 @@ public class DifficultySelector extends JPanel {
         add(easyLevel,c);
         easyLevel.addActionListener(e -> {
             easyChecked = true;
-
-            //newGame.changeFilepath("purple.jpg");
             newGame = new GameWindow();
             option1Ticked();
             option2Ticked();
@@ -181,5 +192,4 @@ public class DifficultySelector extends JPanel {
         Window.cardPane.remove(newGame);
         //setVariablesFalse();
     }
-
 }
