@@ -46,10 +46,8 @@ public class DifficultySelector extends JPanel {
         ultraHard();
         impossible();
 
-        impossible.setBackground(Color.black);
-        impossible.setForeground(Color.white);
-        add(ultraHard,c);
-        add(impossible,c);
+        //add(ultraHard,c);
+        //add(impossible,c);
         backButton();
     }
 
@@ -223,6 +221,8 @@ public class DifficultySelector extends JPanel {
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
+            //impossibleChecked = false;
         });
+        //impossibleChecked = false;
     }
 }

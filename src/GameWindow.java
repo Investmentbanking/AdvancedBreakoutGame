@@ -72,12 +72,24 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
             count++;
         }
 
-        // green bricks (normal bricks)
-        int greenX = 20;
-        int greenY = 100; // 80
-        for(int i = 0; i < 4; i++){
-            handler.addGameObjects(new NormalBrick(greenX, greenY,0,0,50,10,ID.BRICK, handler,ColorID.GREEN));
-            greenX += 110;
+        if(DifficultySelector.impossibleChecked){
+            // pink bricks which change color
+            int pinkX = 20;
+            int pinkY = 100;
+            for (int i =0; i<4; i++){
+                handler.addGameObjects(new ColorChangingBrick(pinkX,pinkY,0,0,50,10, ID.BRICK, handler,ColorID.PINK,2));
+                pinkX += 110;
+            }
+        }
+
+        else {
+            // green bricks (normal bricks)
+            int greenX = 20;
+            int greenY = 100; // 80
+            for (int i = 0; i < 4; i++) {
+                handler.addGameObjects(new NormalBrick(greenX, greenY, 0, 0, 50, 10, ID.BRICK, handler, ColorID.GREEN));
+                greenX += 110;
+            }
         }
 
         // pink bricks which change color
@@ -235,7 +247,6 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
         Thread.sleep(1000);
     }
 
-
     /**
      * The number of lives the player has. (Lives: ).
      *
@@ -283,7 +294,7 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
         }
         if(getLives() == 0) {
             try {
-                Font f = new Font("Comic Sans MS", Font.BOLD, 20);
+                Font f = new Font("Comic Sans MS", Font.BOLD, 50);
                 g.setColor(Color.white);
                 g.setFont(f);
                 g.drawString(String.format("%s", "YOU LOSE"), 150,300);
@@ -297,15 +308,16 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
                 DifficultySelector.easyChecked = false;
                 DifficultySelector.mediumChecked = false;
                 DifficultySelector.hardChecked = false;
+                DifficultySelector.impossibleChecked = false;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         if(handler.getBricks().size() == 0){
-            Font f = new Font("Comic Sans MS", Font.BOLD, 20);
+            Font f = new Font("Comic Sans MS", Font.BOLD, 30);
             g.setColor(Color.white);
             g.setFont(f);
-            g.drawString(String.format("%s", "CONGRATS YOU WIN!"), 150,300);
+            g.drawString(String.format("%s", "CONGRATS YOU WIN!"), 50,300);
             ArrayList<Ball> balls = handler.getBalls();
             for (Ball temp : balls) {
                 temp.stopBall();

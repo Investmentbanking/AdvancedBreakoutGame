@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 
 /**
  * This class creates the background selector JPanel which allows the player to choose a background
@@ -23,6 +22,7 @@ public class BackgroundSelector extends JPanel{
     JRadioButton radioButton4;
     JRadioButton radioButton5;
     JRadioButton radioButton6;
+    //JRadioButton preSelected = new JRadioButton("me");
 
     protected static boolean option1 = false;
     protected static boolean option2 = false;
