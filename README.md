@@ -23,6 +23,7 @@ Background selector:
 ![image](https://user-images.githubusercontent.com/41571606/187329823-a0ba751b-1b81-49d7-9439-75aff0c40910.png)
 
 Difficulty selector:
+
 ![image](https://user-images.githubusercontent.com/41571606/188009830-ae599ed8-63ca-4315-8feb-913d5ee3746d.png)
 
 Default background:
