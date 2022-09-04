@@ -101,9 +101,11 @@ public class Window {
 
     public static void mainPanel(){
         cardLayout.show(cardPane, "Main Menu");
+        cardLayout.removeLayoutComponent(PanelController.newGame);
     }
 
     public void backgroundPanel(){
+        background.resetLayout();
         cardLayout.show(cardPane, "Background Panel");
     }
 

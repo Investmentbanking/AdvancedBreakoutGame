@@ -46,8 +46,6 @@ public class DifficultySelector extends JPanel {
         ultraHard();
         impossible();
 
-        //add(ultraHard,c);
-        //add(impossible,c);
         backButton();
     }
 
@@ -73,38 +71,24 @@ public class DifficultySelector extends JPanel {
         g.drawImage(image,0,0,null);
     }
 
-    private void option1Ticked(){
+
+    private void optionTicked(){
         if(BackgroundSelector.option1) {
             newGame.changeFilepath("space.jpg");
         }
-    }
-
-    private void option2Ticked(){
-        if(BackgroundSelector.option2) {
+        else if(BackgroundSelector.option2) {
             newGame.changeFilepath("bricks.jpg");
         }
-    }
-
-    private void option3Ticked(){
-        if(BackgroundSelector.option3) {
+        else if(BackgroundSelector.option3) {
             newGame.changeFilepath("stars.jpg");
         }
-    }
-
-    private void option4Ticked(){
-        if(BackgroundSelector.option4) {
+        else if(BackgroundSelector.option4) {
             newGame.changeFilepath("bubbles.jpg");
         }
-    }
-
-    private void option5Ticked(){
-        if(BackgroundSelector.option5) {
+        else if(BackgroundSelector.option5) {
             newGame.changeFilepath("forest.jpg");
         }
-    }
-
-    private void option6Ticked(){
-        if(BackgroundSelector.option6) {
+        else if(BackgroundSelector.option6) {
             newGame.changeFilepath("purple.jpg");
         }
     }
@@ -126,12 +110,7 @@ public class DifficultySelector extends JPanel {
         easyLevel.addActionListener(e -> {
             easyChecked = true;
             newGame = new GameWindow();
-            option1Ticked();
-            option2Ticked();
-            option3Ticked();
-            option4Ticked();
-            option5Ticked();
-            option6Ticked();
+            optionTicked();
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
@@ -147,13 +126,7 @@ public class DifficultySelector extends JPanel {
         mediumLevel.addActionListener(e -> {
             mediumChecked = true;
             newGame = new GameWindow();
-            option1Ticked();
-            option2Ticked();
-            option3Ticked();
-            option4Ticked();
-            option5Ticked();
-            option6Ticked();
-            option2Ticked();
+            optionTicked();
 
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
@@ -169,13 +142,7 @@ public class DifficultySelector extends JPanel {
         hardLevel.addActionListener(e -> {
             hardChecked = true;
             newGame = new GameWindow();
-            option1Ticked();
-            option2Ticked();
-            option3Ticked();
-            option4Ticked();
-            option5Ticked();
-            option6Ticked();
-            option2Ticked();
+            optionTicked();
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
@@ -190,13 +157,8 @@ public class DifficultySelector extends JPanel {
         ultraHard.addActionListener(e -> {
             ultraHardChecked = true;
             newGame = new GameWindow();
-            option1Ticked();
-            option2Ticked();
-            option3Ticked();
-            option4Ticked();
-            option5Ticked();
-            option6Ticked();
-            option2Ticked();
+            optionTicked();
+
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();
@@ -211,13 +173,8 @@ public class DifficultySelector extends JPanel {
         impossible.addActionListener(e -> {
             impossibleChecked = true;
             newGame = new GameWindow();
-            option1Ticked();
-            option2Ticked();
-            option3Ticked();
-            option4Ticked();
-            option5Ticked();
-            option6Ticked();
-            option2Ticked();
+            PanelController.newGame = newGame;
+            optionTicked();
             Window.cardPane.add(newGame, "new Game");
             Window.cardLayout.show(Window.cardPane, "new Game");
             setVariablesFalse();

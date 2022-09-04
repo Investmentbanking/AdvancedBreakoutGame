@@ -115,8 +115,8 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Paddle paddle = handler.getPaddle();
-                    paddle.setXSpeed(-5);
-                    repaint();
+                paddle.setXSpeed(-5);
+                repaint();
             }
         });
         String actionId1 = "right";
@@ -239,7 +239,7 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
                     temp.startBall(10,11);
                 }
                 else if (DifficultySelector.impossibleChecked){
-                    temp.startBall(12,13);
+                    temp.startBall(15,16);
                 }
             }
         }
@@ -322,8 +322,8 @@ public class GameWindow extends JPanel implements Runnable, ActionListener {
             for (Ball temp : balls) {
                 temp.stopBall();
             }
-           Thread thread = new Thread(this);
-           thread.start();
+            Thread thread = new Thread(this);
+            thread.start();
         }
     }
 

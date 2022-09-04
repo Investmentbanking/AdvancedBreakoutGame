@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * This class creates the background selector JPanel which allows the player to choose a background
@@ -8,8 +12,10 @@ import java.awt.*;
  */
 public class BackgroundSelector extends JPanel{
 
-    private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
-    private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("black.jpg"));
+    //private final ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    //private final Image image = Toolkit.getDefaultToolkit().getImage(cl.getResource("black.jpg"));
+    BufferedImage background = ImageIO.read(Objects.requireNonNull(getClass().getResource("black.jpg")));
+
 
     JLabel label;
 
@@ -35,7 +41,7 @@ public class BackgroundSelector extends JPanel{
      * Constructor which adds the radio buttons to a button group and displays them on the JPanel using a flow layout.
      *
      */
-    public BackgroundSelector(){
+    public BackgroundSelector() throws IOException {
 
         label = new JLabel("Please select a background", JLabel.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
@@ -67,11 +73,11 @@ public class BackgroundSelector extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        image.getScaledInstance(500, 500,Image.SCALE_SMOOTH);
-        while(!prepareImage(image, this)) {
-            prepareImage(image, this);
+        background.getScaledInstance(500, 500,Image.SCALE_SMOOTH);
+        while(!prepareImage(background, this)) {
+            prepareImage(background, this);
         }
-        g.drawImage(image,0,0,null);
+        g.drawImage(background,0,0,null);
     }
 
     /**
@@ -172,6 +178,15 @@ public class BackgroundSelector extends JPanel{
             Window.cardLayout.show(Window.cardPane, "Difficulty panel");
             group.clearSelection();
         });
+    }
+
+    public void resetLayout() {
+        radioButton.setSelected(false);
+        radioButton2.setSelected(false);
+        radioButton3.setSelected(false);
+        radioButton4.setSelected(false);
+        radioButton5.setSelected(false);
+        radioButton6.setSelected(false);
     }
 }
 
